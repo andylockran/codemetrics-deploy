@@ -4,7 +4,7 @@ import * as CdkPipeline from "../lib/cdk-pipeline-stack";
 
 // example test. To run these tests, uncomment this file along with the
 // example resource in lib/cdk-pipeline-stack.ts
-describe("This is a basic stack for a recursively updating pipeline on each push to main", () => {
+describe("Recursive pipeline", () => {
   const app = new cdk.App();
   const stack = new CdkPipeline.CdkPipelineStack(app, "TestStack");
   const template = Template.fromStack(stack);
@@ -51,6 +51,20 @@ describe("This is a basic stack for a recursively updating pipeline on each push
     });
   });
   describe("The deployments bucket is configured correctly", () => {
-
+    test("It has public Read access disabled", () => {
+      template.hasResourceProperties("AWS::S3::Bucket", {
+        PublicAccessBlockConfiguration: Match.objectEquals({
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true
+        })
+      });
+    })
+    test("It has versioning enabled", () => {
+      template.hasResourceProperties("AWS::S3::Bucket", {
+        VersioningConfiguration: Match.objectEquals({ "Status": "Enabled" })
+      })
+    })
   });
 });
