@@ -78,7 +78,7 @@ export class CdkPipelineStack extends cdk.Stack {
         input: CodePipelineSource.s3(deploymentBucket, 'codemetrics-deploy.zip', {
           trigger: S3Trigger.EVENTS
         }),
-        commands: ["ls -ltrhR", "cd codemetrics-deploy/cdk-pipeline","npm ci", "npm run build", "npx cdk synth"],
+        commands: ["cd codemetrics-deploy/cdk-pipeline","npm ci", "npm run build", "npx cdk synth"],
       }),
     });
   }
