@@ -56,7 +56,7 @@ export class CdkPipelineStack extends cdk.Stack {
               new PolicyStatement({
                 effect: Effect.ALLOW,
                 actions: [
-                  "s3:ListObject*",
+                  "s3:List*",
                   "s3:Put*"
                 ],
                 resources: [
