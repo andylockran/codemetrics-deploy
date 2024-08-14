@@ -1,0 +1,20 @@
+name: Example
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Configure AWS Credentials" Action for GitHub Actions
+        # You may pin to the exact commit or the version.
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
+        with:
+          # AWS Region, e.g. us-east-2
+          aws-region: eu-west-2
+          # The Amazon Resource Name (ARN) of the role to assume. Use the provided credentials to assume an IAM role and configure the Actions environment with the assumed role credentials rather than with the provided credentials.
+          role-to-assume: secret.GITHUB_ROLE_ARN
+          role-session-name: github-action-main
+    
