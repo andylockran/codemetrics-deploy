@@ -79,6 +79,7 @@ export class CdkPipelineStack extends cdk.Stack {
           trigger: S3Trigger.EVENTS
         }),
         commands: ["cd codemetrics-deploy/cdk-pipeline","npm ci", "npm run build", "npx cdk synth"],
+        primaryOutputDirectory: 'codemetrics-deploy/cdk-pipeline/cdk.out',
       }),
     });
   }
