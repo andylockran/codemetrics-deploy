@@ -1,2 +1,3 @@
 # codemetrics-deploy
-Demo app for deploying CodeMetrics
+
+This is a demo app/pipeline combination for deploying from Github.  It'll recursively deploy itself on merge to main...
