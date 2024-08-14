@@ -17,7 +17,8 @@ jobs:
           filename: template.zip
       - name: list files
         run: |
-          ls -l
+          ls -ltr
+  
       - name: aws-credentials
         # You may pin to the exact commit or the version.
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
