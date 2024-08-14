@@ -6,6 +6,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
     strategy:
       matrix:
         node-version: ['18.x', '20.x']
