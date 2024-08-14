@@ -16,6 +16,7 @@ import {
   PolicyDocument,
   Effect,
 } from "aws-cdk-lib/aws-iam";
+import { S3Trigger } from "aws-cdk-lib/aws-codepipeline-actions";
 
 export class CdkPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -73,8 +74,10 @@ export class CdkPipelineStack extends cdk.Stack {
     const pipeline = new CodePipeline(this, "Pipeline", {
       pipelineName: "CDKPipeline",
       synth: new ShellStep("Synth", {
-        input: CodePipelineSource.s3(deploymentBucket, 'codemetrics-deploy.zip'),
-        commands: ["npm ci", "npm run build", "npx cdk synth"],
+        input: CodePipelineSource.s3(deploymentBucket, 'codemetrics-deploy.zip', {
+          trigger: S3Trigger.EVENTS
+        }),
+        commands: ["cd cdk-pipeline","npm ci", "npm run build", "npx cdk synth"],
       }),
     });
   }
