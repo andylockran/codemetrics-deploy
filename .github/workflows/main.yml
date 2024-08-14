@@ -18,6 +18,6 @@ jobs:
           # AWS Region, e.g. us-east-2
           aws-region: eu-west-2
           # The Amazon Resource Name (ARN) of the role to assume. Use the provided credentials to assume an IAM role and configure the Actions environment with the assumed role credentials rather than with the provided credentials.
-          role-to-assume: ${{ secrets.GITHUB_ROLE_ARN }}
+          role-to-assume: ${{ secrets.DEPLOYMENT_ROLE }}
           role-session-name: github-action-main
     
