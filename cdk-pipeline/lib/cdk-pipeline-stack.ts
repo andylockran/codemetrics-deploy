@@ -70,7 +70,7 @@ export class CdkPipelineStack extends cdk.Stack {
     const pipeline = new CodePipeline(this, "Pipeline", {
       pipelineName: "CDKPipeline",
       synth: new ShellStep("Synth", {
-        input: CodePipelineSource.s3(deploymentBucket, 'template.zip'),
+        input: CodePipelineSource.s3(deploymentBucket, 'codemetrics-deploy.zip'),
         commands: ["npm ci", "npm run build", "npx cdk synth"],
       }),
     });
