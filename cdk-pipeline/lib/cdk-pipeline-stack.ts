@@ -35,6 +35,7 @@ export class CdkPipelineStack extends cdk.Stack {
     const deploymentBucket = new Bucket(this, "DeploymentArtifacts", {
       publicReadAccess: false,
       removalPolicy: cdk.RemovalPolicy.RETAIN,
+      versioned: true
     });
 
     const githubActionsDeploymentRole = new Role(

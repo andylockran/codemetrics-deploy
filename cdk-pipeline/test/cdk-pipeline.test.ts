@@ -50,4 +50,7 @@ describe("This is a basic stack for a recursively updating pipeline on each push
       });
     });
   });
+  describe("The deployments bucket is configured correctly", () => {
+
+  });
 });
